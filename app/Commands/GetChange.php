@@ -12,7 +12,7 @@ class GetChange extends Command
      *
      * @var string
      */
-    protected $signature = 'change {owed : The amount owed} {paying : The amount paying}';
+    protected $signature = 'change {paying : The amount paying} {owed : The amount owed}';
 
     /**
      * The description of the command.
@@ -29,7 +29,7 @@ class GetChange extends Command
     public function handle()
     {
         $drawer = array(10000, 5000, 2000, 1000, 500, 100, 25, 10, 5, 1);
-        $change = ($this->argument('owed') - $this->argument('paying')) * 100;
+        $change = ($this->argument('paying') - $this->argument('owed')) * 100;
         $result = array();
 
         if($change !== 0) {
